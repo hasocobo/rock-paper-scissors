@@ -7,6 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        function getComputerChoice(){
+            let states = ["Rock", "Paper", "Scissors"];
+            return states[Math.floor((Math.random() * states.length))];
+        }
+
+        console.log(getComputerChoice());
+
+    </script>
 </body>
 </html>
