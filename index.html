@@ -8,42 +8,82 @@
 </head>
 <body>
     <script>
-        
-        playerSelection = prompt("Rock, Paper or Scissors?").toLocaleLowerCase();
-        computerSelection = getComputerChoice().toLocaleLowerCase();
+        let playerScore = 0,
+            computerScore = 0;
 
-        playRound(playerSelection, computerSelection);
+        playGame()
         
         function playRound(playerSelection, computerSelection){
             if(playerSelection ===  computerSelection){
-                alert(`It's draw! You chose ${playerSelection}, computer also chose ${computerSelection}`);
+                alert(`It's draw! You chose ${playerSelection}, computer also chose ${computerSelection}. You: ${playerScore} Computer: ${computerScore}`);
             }
             else if(playerSelection === "rock"){
                 if(computerSelection === "paper"){
-                    alert(`You lose! Paper beats rock!`);
+                    computerScore++;
+                    alert(`You lose! Paper beats rock! You: ${playerScore} Computer: ${computerScore}`);
                 }
                 else {
-                    alert("You win! Rock beats scissors");
+                    playerScore++;
+                    alert(`You win! Rock beats scissors! You: ${playerScore} Computer: ${computerScore}`);
                 }
             }
             else if(playerSelection === "paper"){
                 if(computerSelection === "rock"){
-                    alert(`You win! Paper beats rock!`);
+                    playerScore++;
+                    alert(`You win! Paper beats rock! You: ${playerScore} Computer: ${computerScore}`);
                 }
                 else {
-                    alert("You lose! Scissors beat paper");
+                    computerScore++;
+                    alert(`You lose! Scissors beat paper! You: ${playerScore} Computer: ${computerScore}`);
                 }
             }
             else if(playerSelection === "scissors"){
                 if(computerSelection === "paper"){
-                    alert(`You win! Scissors beat paper`);
+                    playerScore++;
+                    alert(`You win! Scissors beat paper! You: ${playerScore} Computer: ${computerScore}`);
                 }
                 else {
-                    alert("You lose! Rock beats scissors");
+                    computerScore++;
+                    alert(`You lose! Rock beats scissors! You: ${playerScore} Computer: ${computerScore}`);
                 }
             }   
         }
 
+        function playGame(){
+            playerSelection = prompt("Rock, Paper or Scissors?").toLocaleLowerCase();
+            computerSelection = getComputerChoice().toLocaleLowerCase();
+            playRound(playerSelection, computerSelection);
+    
+            playerSelection = prompt("Rock, Paper or Scissors?").toLocaleLowerCase();
+            computerSelection = getComputerChoice().toLocaleLowerCase();
+            playRound(playerSelection, computerSelection);
+
+            playerSelection = prompt("Rock, Paper or Scissors?").toLocaleLowerCase();
+            computerSelection = getComputerChoice().toLocaleLowerCase();
+            playRound(playerSelection, computerSelection);
+
+            playerSelection = prompt("Rock, Paper or Scissors?").toLocaleLowerCase();
+            computerSelection = getComputerChoice().toLocaleLowerCase();
+            playRound(playerSelection, computerSelection);
+
+            playerSelection = prompt("Rock, Paper or Scissors?").toLocaleLowerCase();
+            computerSelection = getComputerChoice().toLocaleLowerCase();
+            playRound(playerSelection, computerSelection);
+
+            if (playerScore > computerScore){
+                alert(`Congratulations! You won! You: ${playerScore} Computer: ${computerScore}`);
+            } 
+            
+            else if (playerScore < computerScore) {
+                alert(`You lost! Computer: ${computerScore} You: ${playerScore}`);
+            }
+
+            else {
+                alert(`It's draw! You: ${playerScore}, Computer: ${computerScore}`);
+            }
+
+    
+        }
 
         function getComputerChoice(){
             let states = ["Rock", "Paper", "Scissors"];
