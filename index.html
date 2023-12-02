@@ -8,12 +8,48 @@
 </head>
 <body>
     <script>
+        
+        playerSelection = prompt("Rock, Paper or Scissors?").toLocaleLowerCase();
+        computerSelection = getComputerChoice().toLocaleLowerCase();
+
+        playRound(playerSelection, computerSelection);
+        
+        function playRound(playerSelection, computerSelection){
+            if(playerSelection ===  computerSelection){
+                alert(`It's draw! You chose ${playerSelection}, computer also chose ${computerSelection}`);
+            }
+            else if(playerSelection === "rock"){
+                if(computerSelection === "paper"){
+                    alert(`You lose! Paper beats rock!`);
+                }
+                else {
+                    alert("You win! Rock beats scissors");
+                }
+            }
+            else if(playerSelection === "paper"){
+                if(computerSelection === "rock"){
+                    alert(`You win! Paper beats rock!`);
+                }
+                else {
+                    alert("You lose! Scissors beat paper");
+                }
+            }
+            else if(playerSelection === "scissors"){
+                if(computerSelection === "paper"){
+                    alert(`You win! Scissors beat paper`);
+                }
+                else {
+                    alert("You lose! Rock beats scissors");
+                }
+            }   
+        }
+
+
         function getComputerChoice(){
             let states = ["Rock", "Paper", "Scissors"];
             return states[Math.floor((Math.random() * states.length))];
         }
 
-        console.log(getComputerChoice());
 
     </script>
 </body>
