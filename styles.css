@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    height: 100vh;
+    width: auto;
+}
+
+#buttons {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    gap: 30px;
+}
+
+button {
+    width: 400px;
+    height: 100px;
+    border-radius: 20px;
+}
+
+.bg-grey {
+    background-color: #F9F8F4;
+    height: inherit;
+}
+
+.margin-auto {
+    margin: 0 auto;
+}
+
+.max-width-800 {
+    width: 800px;
+}
