@@ -1,6 +1,11 @@
 let playerScore = 0,
     computerScore = 0;
      
+const playerScoreText = document.querySelector('#user-score');
+const computerScoreText = document.querySelector('#computer-score');
+const content = document.querySelector('#content');
+const infoText = document.querySelector('#info-text');
+
     
         addEventListeners();
 
@@ -19,38 +24,40 @@ let playerScore = 0,
 
         function playRound(playerSelection, computerSelection){
             if(playerSelection ===  computerSelection){
-                alert(`It's a tie! You chose ${playerSelection}, computer also chose ${computerSelection}. You: ${playerScore} Computer: ${computerScore}`);
+                infoText.textContent = `It's a tie! You chose ${playerSelection}, computer also chose ${computerSelection}.`;
             }
             else if(playerSelection === "rock"){
                 if(computerSelection === "paper"){
                     computerScore++;
-                    alert(`You lose! Paper beats rock! You: ${playerScore} Computer: ${computerScore}`);
+                    infoText.textContent = `You lose! Paper beats rock!`;
                 }
                 else {
                     playerScore++;
-                    alert(`You win! Rock beats scissors! You: ${playerScore} Computer: ${computerScore}`);
+                    infoText.textContent = `You win! Rock beats scissors!`;
                 }
             }
             else if(playerSelection === "paper"){
                 if(computerSelection === "rock"){
                     playerScore++;
-                    alert(`You win! Paper beats rock! You: ${playerScore} Computer: ${computerScore}`);
+                    infoText.textContent = `You win! Paper beats rock!`;
                 }
                 else {
                     computerScore++;
-                    alert(`You lose! Scissors beat paper! You: ${playerScore} Computer: ${computerScore}`);
+                    infoText.textContent = `You lose! Scissors beat paper!`;
                 }
             }
             else if(playerSelection === "scissors"){
                 if(computerSelection === "paper"){
                     playerScore++;
-                    alert(`You win! Scissors beat paper! You: ${playerScore} Computer: ${computerScore}`);
+                    infoText.textContent = `You win! Scissors beat paper!`;
                 }
                 else {
                     computerScore++;
-                    alert(`You lose! Rock beats scissors! You: ${playerScore} Computer: ${computerScore}`);
+                    infoText.textContent = `You lose! Rock beats scissors!`;
                 }
-            }   
+            }
+            
+            updateScores();
         }
 
         function playGame(){
@@ -61,15 +68,15 @@ let playerScore = 0,
             playRound(playerSelection, computerSelection);
 
             if (playerScore > computerScore){
-                alert(`Congratulations! You won! You: ${playerScore} Computer: ${computerScore}`);
+                infoText.textContent = (`Congratulations! You won! You: ${playerScore} Computer: ${computerScore}`);
             } 
             
             else if (playerScore < computerScore) {
-                alert(`You lost! Computer: ${computerScore} You: ${playerScore}`);
+                infoText.textContent = (`You lost! Computer: ${computerScore} You: ${playerScore}`);
             }
 
             else {
-                alert(`It's a tie! You: ${playerScore}, Computer: ${computerScore}`);
+                infoText.textContent = (`It's a tie! You: ${playerScore}, Computer: ${computerScore}`);
             }
 
     
@@ -78,6 +85,11 @@ let playerScore = 0,
         function getComputerChoice(){
             let states = ["Rock", "Paper", "Scissors"];
             return states[Math.floor((Math.random() * states.length))];
+        }
+
+        function updateScores() {
+            playerScoreText.textContent = playerScore;
+            computerScoreText.textContent = computerScore;
         }
 
 /*

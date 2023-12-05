@@ -8,13 +8,28 @@
     <link rel="stylesheet" href="./styles.css">
     <title>Document</title>
 </head>
-<body>
-    <div class="bg-grey">
-        <div class="margin-auto max-width-800">
-            <div id="buttons" class="flex-center">
-                <button id="rock">Rock</button>
-                <button id="paper">Paper</button>
-                <button id="scissors">Scissors</button>
+<body class="bg-grey">
+    <div>
+        <div class="margin-auto max-width-900">
+            <div id ="content" class="wrapper font-segoe flex-column-center">
+                <div id="scores" class="flex-center flex-gap">
+                    <div id="user-score-information">
+                        <span>You : </span>
+                    <span id="user-score">0</span>
+                    </div>
+                    <div id="computer-score-information">
+                        <span>Computer : </span>
+                        <span id="computer-score">0</span>
+                    </div>
+                </div>
+                <div id="buttons" class="flex-row-center">
+                    <button id="rock" class="font-segoe">Rock</button>
+                    <button id="paper" class="font-segoe">Paper</button>
+                    <button id="scissors" class="font-segoe">Scissors</button>
+                </div>
+                <div id="info-text" class="flex-row-center font-size-big"></div>
+            </div>
+                
             </div>
         </div>
     </div>
