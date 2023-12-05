@@ -5,12 +5,15 @@ const playerScoreText = document.querySelector('#user-score');
 const computerScoreText = document.querySelector('#computer-score');
 const content = document.querySelector('#content');
 const infoText = document.querySelector('#info-text');
+const restartGame = document.querySelector('#restart-game');
 
     
-        addEventListeners();
+        playGame();
+
+
 
         function addEventListeners(){
-            let playerChoice = "";
+        let playerChoice = "";
             const buttons = document.querySelectorAll('button');
             for(let button of buttons){
                 button.addEventListener('click', () => {
@@ -58,28 +61,16 @@ const infoText = document.querySelector('#info-text');
             }
             
             updateScores();
+            if(isGameOver()){
+                const buttons = document.querySelector('#buttons').children;
+                for(let button of buttons){
+                    button.disabled = 'disabled';
+                }
+            }
         }
 
         function playGame(){
-            playRound(playerSelection, computerSelection);
-            playRound(playerSelection, computerSelection);
-            playRound(playerSelection, computerSelection);
-            playRound(playerSelection, computerSelection);
-            playRound(playerSelection, computerSelection);
-
-            if (playerScore > computerScore){
-                infoText.textContent = (`Congratulations! You won! You: ${playerScore} Computer: ${computerScore}`);
-            } 
-            
-            else if (playerScore < computerScore) {
-                infoText.textContent = (`You lost! Computer: ${computerScore} You: ${playerScore}`);
-            }
-
-            else {
-                infoText.textContent = (`It's a tie! You: ${playerScore}, Computer: ${computerScore}`);
-            }
-
-    
+            addEventListeners();
         }
 
         function getComputerChoice(){
@@ -92,6 +83,34 @@ const infoText = document.querySelector('#info-text');
             computerScoreText.textContent = computerScore;
         }
 
+        function isGameOver() {
+            if (playerScore == 5){
+                const restartButton = document.createElement('button');
+                infoText.textContent = (`Congratulations! You won the game!`);
+                restartButton.textContent = 'Restart Game';
+                restartButton.style = "margin-top: 20px";
+                restartGame.appendChild(restartButton);
+
+                restartButton.addEventListener('click', () => {
+                    window.location.reload();
+                })
+
+                return true;
+            } 
+            
+            else if (computerScore == 5) {
+                infoText.textContent = (`You lost the game!`);
+                const restartButton = document.createElement('button');
+                restartButton.textContent = 'Restart Game';
+                restartButton.style = "margin-top: 20px";
+                restartGame.appendChild(restartButton);
+                restartButton.addEventListener('click', () => {
+                    window.location.reload();
+                });
+
+                return true;
+            }
+        }
 /*
   butonları dom olarak al
   button listener'ları ekle ve player choice'ları güncelle
