@@ -1,8 +1,22 @@
 let playerScore = 0,
-            computerScore = 0;
+    computerScore = 0;
+     
+    
+        addEventListeners();
 
-        //playGame()
-        
+        function addEventListeners(){
+            let playerChoice = "";
+            const buttons = document.querySelectorAll('button');
+            for(let button of buttons){
+                button.addEventListener('click', () => {
+                    playerChoice = button.textContent.toLocaleLowerCase();
+                    computerChoice = getComputerChoice().toLocaleLowerCase();
+                    playRound(playerChoice, computerChoice);
+                })
+            }
+        }
+
+
         function playRound(playerSelection, computerSelection){
             if(playerSelection ===  computerSelection){
                 alert(`It's a tie! You chose ${playerSelection}, computer also chose ${computerSelection}. You: ${playerScore} Computer: ${computerScore}`);
@@ -40,24 +54,10 @@ let playerScore = 0,
         }
 
         function playGame(){
-            playerSelection = prompt("Rock, Paper or Scissors?").toLocaleLowerCase();
-            computerSelection = getComputerChoice().toLocaleLowerCase();
             playRound(playerSelection, computerSelection);
-    
-            playerSelection = prompt("Rock, Paper or Scissors?").toLocaleLowerCase();
-            computerSelection = getComputerChoice().toLocaleLowerCase();
             playRound(playerSelection, computerSelection);
-
-            playerSelection = prompt("Rock, Paper or Scissors?").toLocaleLowerCase();
-            computerSelection = getComputerChoice().toLocaleLowerCase();
             playRound(playerSelection, computerSelection);
-
-            playerSelection = prompt("Rock, Paper or Scissors?").toLocaleLowerCase();
-            computerSelection = getComputerChoice().toLocaleLowerCase();
             playRound(playerSelection, computerSelection);
-
-            playerSelection = prompt("Rock, Paper or Scissors?").toLocaleLowerCase();
-            computerSelection = getComputerChoice().toLocaleLowerCase();
             playRound(playerSelection, computerSelection);
 
             if (playerScore > computerScore){
@@ -80,3 +80,8 @@ let playerScore = 0,
             return states[Math.floor((Math.random() * states.length))];
         }
 
+/*
+  butonları dom olarak al
+  button listener'ları ekle ve player choice'ları güncelle
+  ekrana sonucu yazdır
+*/
